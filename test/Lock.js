@@ -10,9 +10,9 @@ describe("Lock", function () {
   // // We use loadFixture to run this setup once, snapshot that state,
   // // and reset Hardhat Network to that snapshot in every test.
   async function deploykFixture() {
-    const [owner] = await getSigners()
-    const ToldSo = await ethers .getContractFactory['ToldSo']
-    const toldSo = await ToldSo .deploy()
+    const [owner] = await ethers.getSigners()
+    const ToldSo = await ethers.getContractFactory['ToldSo']
+    const toldSo = await ToldSo.deploy()
     await toldSo.deployed()
     return {owner, toldSo}
   }
@@ -24,7 +24,7 @@ describe("Lock", function () {
       const body = "This is my first post"
       await toldSo.createPost(title, body)
       const posts = await toldSo.getPostByAuthor()
-      expect(posts[0]) to equal(post)
+      expect(posts[0]).to.equal(post)
     });
   });
 
